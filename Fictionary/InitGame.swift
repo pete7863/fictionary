@@ -12,6 +12,8 @@ import UIKit
 let MIN_NUM_PLAYERS = 2;
 let MAX_NUM_PLAYERS = 8;
 
+var Players:[String] = []
+
 class InitGame: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var BeginGame: UIButton!
@@ -100,10 +102,6 @@ class InitGame: UIViewController, UITextFieldDelegate {
         }
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.view.endEditing(true)
-    }
-    
     func textFieldDidBeginEditing(textField: UITextField) {
         if(textField.center.y > 340)
         {
@@ -126,6 +124,23 @@ class InitGame: UIViewController, UITextFieldDelegate {
         UIView.setAnimationDuration(movementDuration )
         self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
         UIView.commitAnimations()
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "BeginGameSegue"
+        {
+            for var i = 0; i < MAX_NUM_PLAYERS; i++
+            {
+                if(nameArray[i].text != "")
+                {
+                    Players.append(nameArray[i].text)
+                }
+            }
+        }
     }
     
 }
