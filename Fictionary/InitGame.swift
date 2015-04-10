@@ -9,32 +9,62 @@
 import Foundation
 import UIKit
 
+let MIN_NUM_PLAYERS = 2;
+let MAX_NUM_PLAYERS = 8;
+
 class InitGame: UIViewController, UITextFieldDelegate {
     
-    var arrayOfTextFields:[UITextField] = []
+    @IBOutlet weak var BeginGame: UIButton!
+    
+    var nameArray:[UITextField] = []
+    var deleteArray:[UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var height = 132;
-        for var i = 1; i <= 8 ; i++
+        //Create player name textfields
+        var offset = -190
+        for var i = 1; i <= MAX_NUM_PLAYERS ; i++
         {
-            var myTextField: UITextField = UITextField(frame: CGRect(x: 0, y: 0, width: 200.00, height: 36.00));
-            myTextField.center = CGPointMake(UIScreen.mainScreen().bounds.width/2, CGFloat(height))
-            myTextField.placeholder = "Player \(i)"
-            myTextField.backgroundColor = UIColor.whiteColor()
-            myTextField.borderStyle = UITextBorderStyle.RoundedRect
-            myTextField.addTarget(self, action: "nameEntered:", forControlEvents: UIControlEvents.EditingChanged)
-            myTextField.addTarget(self, action: "textFieldDidBeginEditing:", forControlEvents: UIControlEvents.EditingDidBegin)
-            myTextField.addTarget(self, action: "textFieldDidEndEditing:", forControlEvents: UIControlEvents.EditingDidEnd)
-            if(i != 1)
+            var nameField: UITextField = UITextField(frame: CGRectZero);
+            self.view.addSubview(nameField)
+            nameField.placeholder = "Player \(i)"
+            nameField.backgroundColor = UIColor.whiteColor()
+            nameField.borderStyle = UITextBorderStyle.RoundedRect
+            nameField.addTarget(self, action: "nameEntered:", forControlEvents: UIControlEvents.EditingChanged)
+            nameField.addTarget(self, action: "textFieldDidBeginEditing:", forControlEvents: UIControlEvents.EditingDidBegin)
+            nameField.addTarget(self, action: "textFieldDidEndEditing:", forControlEvents: UIControlEvents.EditingDidEnd)
+            nameField.setTranslatesAutoresizingMaskIntoConstraints(false)
+            
+            let widthConstraint = NSLayoutConstraint(item: nameField, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 200)
+            let heightConstraint = NSLayoutConstraint(item: nameField, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 36)
+            
+            nameField.addConstraint(widthConstraint)
+            nameField.addConstraint(heightConstraint)
+            
+            let xConstraint = NSLayoutConstraint(item: nameField, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
+            let yConstraint = NSLayoutConstraint(item: nameField, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: CGFloat(offset))
+            
+            self.view.addConstraint(xConstraint)
+            self.view.addConstraint(yConstraint)
+            
+            //Add delete button
+            /*var deleteButton: UIButton = UIButton(frame: CGRect(x: 270, y: offset - 18, width: 36, height: 36));
+            self.view.addSubview(deleteButton)
+            deleteButton.backgroundColor = UIColor.blackColor()
+            deleteButton.hidden = true*/
+            
+            if(i > 1) //Hide all but the first
             {
-                myTextField.hidden = true
+                nameField.hidden = true
             }
-            height = height + 48;
-            self.arrayOfTextFields.append(myTextField)
-            self.view.addSubview(myTextField)
+            offset = offset + 48;
+            self.nameArray.append(nameField)
+            //self.deleteArray.append(deleteButton)
         }
+        
+        //TODO: Hide begin button
+        BeginGame.hidden = false
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -43,11 +73,12 @@ class InitGame: UIViewController, UITextFieldDelegate {
     }
     
     func nameEntered(sender: UITextField!) {
-        var i = 0
+        var player = 0
         
-        for i = 0; i <= 7; i++
+        //Determine which textfield got us here
+        for player = 0; player <= MAX_NUM_PLAYERS - 1; player++
         {
-            if(arrayOfTextFields[i] == sender)
+            if(nameArray[player] == sender)
             {
                 break
             }
@@ -55,21 +86,21 @@ class InitGame: UIViewController, UITextFieldDelegate {
         
         if(sender.text == "")
         {
-            for var j = 7; j > i; j--
+            for var i = MAX_NUM_PLAYERS - 1; i > player; i-- //Hide entries after
             {
-                arrayOfTextFields[j].hidden = true
+                nameArray[i].hidden = true
             }
         }
         else
         {
-            if(i < 7)
+            if(player < MAX_NUM_PLAYERS-1) //Show entries below
             {
-                arrayOfTextFields[i+1].hidden = false
+                nameArray[player+1].hidden = false
             }
         }
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
     }
     
