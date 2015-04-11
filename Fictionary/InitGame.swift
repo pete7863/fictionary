@@ -9,13 +9,9 @@
 import Foundation
 import UIKit
 
-let MIN_NUM_PLAYERS = 2;
-let MAX_NUM_PLAYERS = 8;
-
-var Players:[String] = []
-
 class InitGame: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var EnterNameLabel: UILabel!
     @IBOutlet weak var BeginGame: UIButton!
     
     var nameArray:[UITextField] = []
@@ -25,7 +21,7 @@ class InitGame: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         //Create player name textfields
-        var offset = -190
+        var offset = 40
         for var i = 1; i <= MAX_NUM_PLAYERS ; i++
         {
             var nameField: UITextField = UITextField(frame: CGRectZero);
@@ -45,16 +41,10 @@ class InitGame: UIViewController, UITextFieldDelegate {
             nameField.addConstraint(heightConstraint)
             
             let xConstraint = NSLayoutConstraint(item: nameField, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
-            let yConstraint = NSLayoutConstraint(item: nameField, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: CGFloat(offset))
+            let yConstraint = NSLayoutConstraint(item: nameField, attribute: .CenterY, relatedBy: .Equal, toItem: EnterNameLabel, attribute: .CenterY, multiplier: 1, constant: CGFloat(offset))
             
             self.view.addConstraint(xConstraint)
             self.view.addConstraint(yConstraint)
-            
-            //Add delete button
-            /*var deleteButton: UIButton = UIButton(frame: CGRect(x: 270, y: offset - 18, width: 36, height: 36));
-            self.view.addSubview(deleteButton)
-            deleteButton.backgroundColor = UIColor.blackColor()
-            deleteButton.hidden = true*/
             
             if(i > 1) //Hide all but the first
             {
@@ -62,7 +52,6 @@ class InitGame: UIViewController, UITextFieldDelegate {
             }
             offset = offset + 48;
             self.nameArray.append(nameField)
-            //self.deleteArray.append(deleteButton)
         }
         
         //TODO: Hide begin button
@@ -137,7 +126,7 @@ class InitGame: UIViewController, UITextFieldDelegate {
             {
                 if(nameArray[i].text != "")
                 {
-                    Players.append(nameArray[i].text)
+                    AddNewPlayer(nameArray[i].text)
                 }
             }
         }

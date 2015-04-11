@@ -13,6 +13,7 @@
 		146857731AD35E820070E9C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 146857721AD35E820070E9C1 /* Images.xcassets */; };
 		146857761AD35E820070E9C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 146857741AD35E820070E9C1 /* LaunchScreen.xib */; };
 		146857821AD35E830070E9C1 /* FictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146857811AD35E830070E9C1 /* FictionaryTests.swift */; };
+		149AACD71AD8C37600BFDD0C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149AACD61AD8C37600BFDD0C /* Game.swift */; };
 		14A057391AD3A0B6004390DF /* InitGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A057381AD3A0B6004390DF /* InitGame.swift */; };
 		14A0573B1AD608E5004390DF /* BeginRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A0573A1AD608E5004390DF /* BeginRound.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		1468577B1AD35E830070E9C1 /* FictionaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FictionaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		146857801AD35E830070E9C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		146857811AD35E830070E9C1 /* FictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FictionaryTests.swift; sourceTree = "<group>"; };
+		149AACD61AD8C37600BFDD0C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		14A057381AD3A0B6004390DF /* InitGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitGame.swift; sourceTree = "<group>"; };
 		14A0573A1AD608E5004390DF /* BeginRound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeginRound.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 			children = (
 				1468576B1AD35E820070E9C1 /* AppDelegate.swift */,
 				14A0573A1AD608E5004390DF /* BeginRound.swift */,
+				149AACD61AD8C37600BFDD0C /* Game.swift */,
 				14A057381AD3A0B6004390DF /* InitGame.swift */,
 				1468576D1AD35E820070E9C1 /* ViewController.swift */,
 				1468576F1AD35E820070E9C1 /* Main.storyboard */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14A0573B1AD608E5004390DF /* BeginRound.swift in Sources */,
+				149AACD71AD8C37600BFDD0C /* Game.swift in Sources */,
 				1468576E1AD35E820070E9C1 /* ViewController.swift in Sources */,
 				1468576C1AD35E820070E9C1 /* AppDelegate.swift in Sources */,
 				14A057391AD3A0B6004390DF /* InitGame.swift in Sources */,
