@@ -11,9 +11,17 @@ import Foundation
 let MIN_NUM_PLAYERS = 2;
 let MAX_NUM_PLAYERS = 8;
 
+var Rounds:[Round] = []
 var Players:[Player] = []
 var CurrentPlayerID = 0
-var Round: Int = 1
+
+public struct Round {
+    var Definition: String = ""
+    
+    init(Definition: String) {
+        self.Definition = Definition
+    }
+}
 
 public struct Player {
     var ID: Int
@@ -35,6 +43,14 @@ public struct Sniglet {
     init(Word: String) {
         self.Word = Word
     }
+}
+
+public func BeginNewRound(definition: String) {
+    Rounds.append(Round(Definition: definition))
+}
+
+public func GetCurrentDefinition() -> String {
+    return Rounds[Rounds.count - 1].Definition
 }
 
 public func AddNewPlayer(name: String) {
