@@ -85,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="DefinitionTextView" destination="XdC-7b-CsG" id="hgw-yb-Xoi"/>
+                        <outlet property="SnigletTextField" destination="2cB-uh-Q21" id="hy4-hh-jWA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUr-BG-zwr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,8 +103,27 @@
                     <view key="view" contentMode="scaleToFill" id="1DW-Mw-faM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Your Vote" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rda-hC-idu">
+                                <rect key="frame" x="219" y="61" width="162" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="x1R-gd-9BH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.70804136989999999" green="0.49858024719999999" blue="0.99897092580000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rda-hC-idu" firstAttribute="centerX" secondItem="1DW-Mw-faM" secondAttribute="centerX" id="7m0-bw-S7E"/>
+                            <constraint firstItem="rda-hC-idu" firstAttribute="top" secondItem="wYB-Kf-tig" secondAttribute="bottom" constant="41" id="Fka-PB-BMG"/>
+                            <constraint firstItem="oqd-pT-EXd" firstAttribute="top" secondItem="rda-hC-idu" secondAttribute="bottom" constant="509" id="dqD-TV-B9R"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="PlaceVoteLabel" destination="rda-hC-idu" id="gmP-Bu-D71"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="muj-s1-Hak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -208,7 +228,7 @@
         <!--EnterSubmission-->
         <scene sceneID="86n-EE-M6h">
             <objects>
-                <viewController title="EnterSubmission" id="O00-Ky-ylS" customClass="EnterSubmission" customModule="Fictionary" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterSubmission" title="EnterSubmission" id="O00-Ky-ylS" customClass="EnterSubmission" customModule="Fictionary" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eze-Ps-Hrf"/>
                         <viewControllerLayoutGuide type="bottom" id="OVb-7v-1BN"/>
@@ -258,7 +278,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="O00-Ky-ylS" kind="show" id="bsa-pM-K9i"/>
+                                    <action selector="NextButtonRelease:" destination="O00-Ky-ylS" eventType="touchUpInside" id="JiZ-cV-Mfp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD7-RF-98y">
@@ -289,14 +309,15 @@
                     </view>
                     <connections>
                         <outlet property="DefinitionLabel" destination="MD7-RF-98y" id="TOL-Ax-Psj"/>
+                        <outlet property="NextButton" destination="fHF-Wq-LgD" id="45k-N6-y7A"/>
+                        <outlet property="SnigletTextField" destination="IMD-B1-BVv" id="oCu-jh-SYe"/>
+                        <outlet property="view" destination="HcC-Gv-RTu" id="yO4-Ic-rdi"/>
+                        <segue destination="sNg-M0-g1W" kind="show" identifier="EndSubmissions" id="JM2-rm-JaG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyS-z4-mDj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3937" y="-423"/>
+            <point key="canvasLocation" x="3919" y="-423"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="eWA-PX-z7W"/>
-    </inferredMetricsTieBreakers>
 </document>

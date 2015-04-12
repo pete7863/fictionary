@@ -12,6 +12,7 @@ import UIKit
 class BeginRound: UIViewController {
     
     @IBOutlet weak var DefinitionTextView: UITextView!
+    @IBOutlet weak var SnigletTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class BeginRound: UIViewController {
         if segue.identifier == "BeginRoundSegue"
         {
             BeginNewRound(DefinitionTextView.text)
+            
+            AddSniglet(Sniglet(Word: SnigletTextField.text))
         }
     }
     

@@ -57,6 +57,27 @@ public func AddNewPlayer(name: String) {
     Players.append(Player(Name: name))
 }
 
-public func AddSniglet(index: Int, sniglet: Sniglet) {
-    Players[index].Sniglets.append(sniglet)
+public func GetCurrentPlayerID() -> Int {
+    return CurrentPlayerID
+}
+
+public func AddSniglet(sniglet: Sniglet) -> Bool {
+    Players[CurrentPlayerID].Sniglets.append(sniglet)
+    
+    CurrentPlayerID++
+    
+    CurrentPlayerID = CurrentPlayerID % Players.count
+    
+    return (CurrentPlayerID == (Rounds.count - 1) % Players.count)
+}
+
+public func GetSniglets() -> [Sniglet] {
+    var sniglets:[Sniglet] = []
+    
+    for var i = 0; i < Players.count; i++
+    {
+        sniglets.append(Players[i].Sniglets[Rounds.count - 1])
+    }
+    
+    return sniglets
 }
