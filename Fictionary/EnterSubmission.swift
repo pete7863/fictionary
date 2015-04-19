@@ -11,13 +11,16 @@ import UIKit
 
 class EnterSubmission: UIViewController {
 
+    @IBOutlet weak var HeaderLabel: UILabel!
     @IBOutlet weak var DefinitionLabel: UILabel!
     @IBOutlet weak var NextButton: UIButton!
     @IBOutlet weak var SnigletTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var currentPlayer:Player = GetCurrentPlayer()
         
+        HeaderLabel.text = currentPlayer.name
         DefinitionLabel.text = GetCurrentDefinition()
     }
     
@@ -33,7 +36,7 @@ class EnterSubmission: UIViewController {
     @IBAction func NextButtonRelease(sender: AnyObject) {
         
         //Submit the entry
-        if(AddSniglet(Sniglet(Word: SnigletTextField.text)))
+        if(AddSniglet(SnigletTextField.text))
         {
             self.performSegueWithIdentifier("EndSubmissions", sender: sender)
         }

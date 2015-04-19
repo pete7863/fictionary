@@ -11,12 +11,15 @@ import UIKit
 
 class BeginRound: UIViewController {
     
+    @IBOutlet weak var HeaderLabel: UILabel!
     @IBOutlet weak var DefinitionTextView: UITextView!
     @IBOutlet weak var SnigletTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var currentPlayer:Player = GetCurrentPlayer()
+        
+        HeaderLabel.text = "\(currentPlayer.name) - Round \(Rounds.count + 1)"
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,7 +36,7 @@ class BeginRound: UIViewController {
         {
             BeginNewRound(DefinitionTextView.text)
             
-            AddSniglet(Sniglet(Word: SnigletTextField.text))
+            AddSniglet(SnigletTextField.text)
         }
     }
     
